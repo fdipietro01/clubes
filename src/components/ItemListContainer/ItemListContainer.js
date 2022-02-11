@@ -6,20 +6,22 @@ import { Loader } from "../Loader/Loader"
 
  
 export const ItemListContainer = () => {
+
+    const {clubesid} = useParams()
+    console.log("categoría es " + clubesid)
     
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(false)
-    const   {catId} = useParams()   
 
     useEffect( () => {
         setLoading(true)
 
         pedirDatos()
             .then((res) => {
-                if(catId){
-                
-                    setProductos( res.filter((el)=> el.categoria === catId));
-                }else{
+                if(clubesid){
+                const filtrados = res.filter((club) => club.categoria === clubesid);
+                setProductos(filtrados)
+            }else{
                     setProductos(res)
                 }
 
@@ -32,7 +34,9 @@ export const ItemListContainer = () => {
                setLoading(false)
             })
 
-    }, [])
+    }, [clubesid])
+
+    console.log(productos)
 
     return (
         <>

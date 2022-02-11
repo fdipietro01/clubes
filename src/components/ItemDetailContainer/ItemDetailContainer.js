@@ -8,24 +8,26 @@ import { Loader } from './../Loader/Loader';
 
 export const ItemDetailContainer =()=>{
 
+    const {id}= useParams()
     const[loading,setLoading] =useState(false)
     const[item,setItem] = useState(null)
 
+    console.log("este es mi id" + id)
     useEffect(()=>{
         setLoading(true)
 
         pedirDatos()
           .then((res)=>{
-              setItem(res[0] )
+              const itemFiltrado = res.find((club)=>club.id === Number(id))
+              console.log(itemFiltrado)
+              setItem(itemFiltrado)
 
           })
           .finally((res)=>{
               setLoading(false)
           })
 
-    },[])
-
-
+    },[id])
 
     return(
         <div className="container my-5">
