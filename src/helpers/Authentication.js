@@ -1,7 +1,7 @@
 const Authentication = () => {
     const user = {
         name : "Juan",
-        isAuth : false,
+        isAuth : true,
     }
   return (
     user

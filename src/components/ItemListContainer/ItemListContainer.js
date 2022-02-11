@@ -32,11 +32,10 @@ export const ItemListContainer = () => {
                setLoading(false)
             })
 
-    }, [catId])
+    }, [])
 
     return (
         <>
-            {!catId? <h1 style={{textAlign: "center", backgroundColor:"orange", fontStyle:"italic"}}> Clubes de Primera División Argentina</h1> : <h1 style={{textAlign: "center", backgroundColor:"orange", fontStyle:"italic"}}>Clubes considerados "{catId}s"</h1> }
             {
                 loading 
                     ? <Loader/>

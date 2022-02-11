@@ -11,22 +11,19 @@ export const ItemDetailContainer =()=>{
     const[loading,setLoading] =useState(false)
     const[item,setItem] = useState(null)
 
-    const {itemId} = useParams()
-    console.log(itemId)
-
     useEffect(()=>{
         setLoading(true)
 
         pedirDatos()
           .then((res)=>{
-              setItem(res.find((el) => el.id === Number(itemId) ))
+              setItem(res[0] )
 
           })
           .finally((res)=>{
               setLoading(false)
           })
 
-    },[itemId])
+    },[])
 
 
 
